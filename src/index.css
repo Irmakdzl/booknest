@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f7f4ed;
+  --color-paper: #fffdf8;
+  --color-sand: #eae3d4;
+  --color-forest: #21493b;
+  --color-forest-deep: #17352c;
+  --color-sage: #78917e;
+  --color-gold: #b8894c;
+  --color-ink: #2b332e;
+  --color-muted: #7b857c;
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --shadow-card: 0 12px 34px -22px rgba(23, 53, 44, 0.35);
+  --shadow-float: 0 18px 45px -25px rgba(23, 53, 44, 0.5);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-forest/15 text-forest-deep;
+  }
+
+  button,
+  a,
+  input,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-forest/8 bg-paper shadow-card;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-forest px-4 py-2.5 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-forest-deep focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-sand/70 px-4 py-2.5 text-sm font-semibold text-forest transition-colors duration-200 hover:bg-sand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-medium text-muted transition-colors duration-200 hover:bg-sand/60 hover:text-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-forest/12 bg-paper px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-muted/70 focus:border-forest/50 focus:ring-2 focus:ring-forest/10;
+  }
+
+  .section-title {
+    @apply font-display text-xl font-semibold tracking-tight text-forest-deep sm:text-2xl;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-gold;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2-custom {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3-custom {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
